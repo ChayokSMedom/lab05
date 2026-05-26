@@ -1,6 +1,6 @@
 language: cpp
 sudo: required
-dist: xenial
+dist: focal
 
 before_script:
   - sudo apt-get update
@@ -9,4 +9,5 @@ before_script:
 script:
   - cmake -H. -B_build -DBUILD_TESTS=ON
   - cmake --build _build
-  - cmake --build _build --target test
+  - cd _build
+  - ctest --output-on-failure
